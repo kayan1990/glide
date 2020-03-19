@@ -8,6 +8,7 @@ import com.squareup.javapoet.TypeSpec;
 import java.lang.annotation.Annotation;
 import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.Generated;
 import javax.lang.model.element.Modifier;
 import javax.lang.model.element.TypeElement;
 
@@ -97,6 +98,10 @@ final class IndexerGenerator {
     indexerName = new StringBuilder(indexerName.substring(0, indexerName.length() - 1));
 
     return TypeSpec.classBuilder(indexerName.toString())
+        .addAnnotation(
+            AnnotationSpec.builder(Generated.class)
+                .addMember("value", "$S", IndexerGenerator.class.getName())
+                .build())
         .addAnnotation(annotationBuilder.build())
         .addModifiers(Modifier.PUBLIC)
         .build();
