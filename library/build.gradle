@@ -1,4 +1,7 @@
 apply plugin: 'com.android.library'
+//启用Jitpack 插件
+apply plugin: 'com.github.dcendents.android-maven'
+group='com.github.kayan1990'
 
 if (!hasProperty('DISABLE_ERROR_PRONE')) {
     apply plugin: "net.ltgt.errorprone"
